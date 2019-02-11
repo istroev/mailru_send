@@ -3,8 +3,8 @@ from selenium import webdriver
 import page
 import argparse
 
-class MailruSendMail(unittest.TestCase):
 
+class MailruSendMail(unittest.TestCase):
     def __init__(self, testname, username, passw, email):
         super(MailruSendMail, self).__init__(testname)
         self.username = username
@@ -21,7 +21,7 @@ class MailruSendMail(unittest.TestCase):
         main_page = page.MainPage(self.driver)
         assert main_page.is_title_matches(), "mail.ru title doesn't match."
 
-        main_page.email_input_element =  self.username
+        main_page.email_input_element = self.username
         main_page.password_input_element = self.passw
         main_page.click_go_button()
 
@@ -38,8 +38,8 @@ class MailruSendMail(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="mailru selenium send mail")
     parser.add_argument("-u", "--username", help="username", required=True)
     parser.add_argument("-p", "--password", help="password", required=True)

@@ -1,14 +1,13 @@
 from element import BasePageElement
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from locators import *
 
-from selenium.webdriver.support.ui import WebDriverWait
-import time
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support import expected_conditions as EC
 
 class EmailInputElement(BasePageElement):
 
     locator = MainPageLocators.EMAIL_INPUT
+
 
 class PasswordInputElement(BasePageElement):
 
@@ -43,7 +42,7 @@ class MailListPage(BasePage):
 class MailSendPage(BasePage):
 
     def new_mail_check(self):
-        return "Новое письмо" in self.driver.title 
+        return "Новое письмо" in self.driver.title
 
     def mail_address(self, address):
         self.driver.find_element(*MailSendPageLocators.MAIL_ADDRESS_INPUT).send_keys(address)
@@ -63,6 +62,6 @@ class MailSendPage(BasePage):
             WebDriverWait(self.driver, 5).until(EC.alert_is_present())
             alert = self.driver.switch_to.alert
             alert.accept()
-        except:
+        except Exception:
             pass
         return "Письмо отправлено" in self.driver.title
