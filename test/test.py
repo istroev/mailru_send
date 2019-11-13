@@ -22,6 +22,7 @@ class MailruSendMail(unittest.TestCase):
         assert main_page.is_title_matches(), "mail.ru title doesn't match."
 
         main_page.email_input_element = self.username
+        main_page.click_go_button()
         main_page.password_input_element = self.passw
         main_page.click_go_button()
 
